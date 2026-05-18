@@ -27,6 +27,8 @@ const userSchema = new mongoose.Schema({
     // ---------------------------
     // Authorization
     // ---------------------------
+   
+    
     role: {
       type: String,
       enum: ["viewer", "producer", "admin"],

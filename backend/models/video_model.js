@@ -22,7 +22,7 @@ const variantSchema = new mongoose.Schema(
 
 const videoSchema = new mongoose.Schema(
   {
-    // ---------------------------
+    // --------------------------- 
     // Core Metadata
     // ---------------------------
     title: {
@@ -70,6 +70,7 @@ const videoSchema = new mongoose.Schema(
         "processing",
         "ready",
         "failed",
+        "transcode_failed",
       ],
       default: "draft",
       index: true,
@@ -79,46 +80,19 @@ const videoSchema = new mongoose.Schema(
       enum: ["direct", "multipart"],
       default: "direct",
     },
-    fileSize: Number, // in bytes
-    mimeType: String,
-    originalFileName: String,
-
-    // ---------------------------
-    // Object Storage Keys
-    // ---------------------------
-    rawVideoKey: String,
-    masterPlaylistKey: String,
-    thumbnailKey: String,
-
-    // ---------------------------
-    // Technical Video Metadata
-    // ---------------------------
-    duration: Number, // seconds
-    width: Number,
-    height: Number,
-    aspectRatio: String,
-    frameRate: Number,
-    codec: String,
-
-    // ---------------------------
-    // HLS Variants
-    // ---------------------------
-    variants: [variantSchema],
-
-    // ---------------------------
-    // Analytics
-    // ---------------------------
-    views: {
-      type: Number,
-      default: 0,
-    },
-    likes: {
-      type: Number,
-      default: 0,
-    },
+    fileSize: Number, // in Gigabytes
     watchTime: {
       type: Number,
       default: 0, // total seconds watched
+    },
+     file:{
+      type:String
+    },
+    transcodedUrl: {
+      type: String,
+    },
+    errorMessage: {
+      type: String,
     },
 
     publishedAt: Date,
@@ -128,7 +102,7 @@ const videoSchema = new mongoose.Schema(
   }
 );
 
-// Compound index for producer dashboard queries
-videoSchema.index({ producerId: 1, createdAt: -1 });
+// // Compound index for producer dashboard queries
+// videoSchema.index({ producerId: 1, createdAt: -1 });
 
 export const Video = mongoose.model("Video", videoSchema);
