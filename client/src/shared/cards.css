@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Rajdhani:wght@600;700&display=swap');
+
+.scene {
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  perspective: 1000px;
+}
+
+.card {
+  width: 260px;
+  height: 370px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,106,0,0.4), 0 0 50px rgba(255,106,0,0.08);
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #200010 0%, #3d0020 40%, #0d0008 100%);
+}
+
+.geo-wrap {
+  position: absolute;
+  top: 17%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+.ring-outer {
+  border: 1px solid rgba(255,106,0,0.35);
+  animation: spinOuter 18s linear infinite;
+}
+
+.ring-inner {
+  inset: 18px;
+  border: 1px solid rgba(255,106,0,0.18);
+  animation: spinInner 12s linear infinite;
+}
+
+.cross-h {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 60px;
+  height: 1px;
+  background: rgba(255,106,0,0.45);
+}
+
+.cross-v {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 1px;
+  height: 60px;
+  background: rgba(255,106,0,0.45);
+}
+
+.geo-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #FF6A00;
+  box-shadow: 0 0 8px rgba(255,106,0,0.9);
+}
+
+.hud {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+}
+
+.hud-tl {
+  top: 10px;
+  left: 10px;
+  border-top: 2px solid #FF6A00;
+  border-left: 2px solid #FF6A00;
+  border-radius: 2px 0 0 0;
+}
+
+.hud-tr {
+  top: 10px;
+  right: 10px;
+  border-top: 2px solid #FF6A00;
+  border-right: 2px solid #FF6A00;
+  border-radius: 0 2px 0 0;
+}
+
+.hud-bl {
+  bottom: 10px;
+  left: 10px;
+  border-bottom: 2px solid #FF6A00;
+  border-left: 2px solid #FF6A00;
+  border-radius: 0 0 0 2px;
+}
+
+.hud-br {
+  bottom: 10px;
+  right: 10px;
+  border-bottom: 2px solid #FF6A00;
+  border-right: 2px solid #FF6A00;
+  border-radius: 0 0 2px 0;
+}
+
+.shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 50%);
+  pointer-events: none;
+  border-radius: 10px;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.4rem 1.1rem 1rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.97) 0%, rgba(0,0,0,0.6) 65%, transparent 100%);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #FF6A00;
+  border: 1px solid rgba(255,106,0,0.5);
+  padding: 2px 7px;
+  border-radius: 2px;
+  margin-bottom: 7px;
+}
+
+.badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #FF6A00;
+  animation: nsPulse 1.4s ease-in-out infinite;
+}
+
+.tags-row {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+.tag {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.45);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 1px 5px;
+  border-radius: 1px;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: 2.2rem;
+  letter-spacing: 4px;
+  color: #fff;
+  text-shadow: 0 0 30px rgba(255,106,0,0.5), 2px 2px 0 #aa3300, 4px 4px 0 #550e00;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.meta {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  color: rgba(255,255,255,0.38);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.star {
+  color: #FFB800;
+}
+
+@keyframes spinOuter {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinInner {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes nsPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
